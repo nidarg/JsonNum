@@ -22,25 +22,29 @@ namespace JsonNumberMain
             return number.Length - number.Replace(toCount, "").Length;
         }
 
-        public static int GetIndexOfExponetialNotation(string number)
+        public static int GetOccurenceCountIgnoringCase(string number,char c)
         {
-            int index = -1;
-            int eCount = GetOccurenceCount("e", number);
-            int ECount = GetOccurenceCount("E", number);
-            if (eCount == 1 && ECount == 0)
+            int count = 0;
+            foreach(char ch in number)
             {
+                if(char.ToUpperInvariant(ch) == char.ToUpperInvariant(c))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
 
-                int eIndex = number.IndexOf('e');
-                //index = eIndex;
-                return eIndex;
-            }
-            else if (ECount == 1 && eCount == 0)
+        public static int GetIndexOfExponentialNotation(string number)
+        {
+            char exponent = 'e';
+            int charCount = GetOccurenceCountIgnoringCase(number, exponent);
+            if(charCount==0||charCount == 1)
             {
-                int EIndex = number.IndexOf('E');
-                //index = EIndex;
-                return EIndex;
+                return number.IndexOf(exponent.ToString(), StringComparison.CurrentCultureIgnoreCase);
             }
-            return index;
+            
+            return -2;
         }
     }
 }

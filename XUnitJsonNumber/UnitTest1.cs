@@ -25,7 +25,15 @@ namespace XUnitJsonNumber
         [InlineData("12E485", 2)]
         public void GetIndexOfE(string number, int expected)
         {
-            int actual = Program.GetIndexOfExponetialNotation(number);
+            int actual = Program.GetIndexOfExponentialNotation(number);
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("12E4e5",'e', 2)]
+        public void VerifyOccurenceOfCharIgnoringCase(string number,char c, int expected)
+        {
+            int actual = Program.GetOccurenceCountIgnoringCase(number,c);
             Assert.Equal(expected, actual);
         }
     }
