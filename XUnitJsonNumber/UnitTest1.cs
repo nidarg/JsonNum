@@ -36,5 +36,14 @@ namespace XUnitJsonNumber
             int actual = Program.GetOccurenceCountIgnoringCase(number,c);
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("12E4e5", '1', true)]
+        public void VerifyMatchingCharacter(string number, char c, bool expected)
+        {
+            bool actual = Program.MatchCharacter(number, c);
+            Assert.Equal(expected, actual);
+        }
+
     }
 }

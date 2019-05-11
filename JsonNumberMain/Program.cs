@@ -46,5 +46,11 @@ namespace JsonNumberMain
             
             return -2;
         }
+
+        public static bool MatchCharacter(string number, char pattern)
+        {
+            return !string.IsNullOrEmpty(number) && number[0] == pattern;
+        }
+
     }
 }
