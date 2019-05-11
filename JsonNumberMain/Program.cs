@@ -52,5 +52,42 @@ namespace JsonNumberMain
             return !string.IsNullOrEmpty(number) && number[0] == pattern;
         }
 
+        public static bool VerifyExponentialNotation(string number)
+        {
+            int dotPosition = number.IndexOf('.');
+            int dotCount = GetOccurenceCount(".", number);
+            int indexOfExponent = GetIndexOfExponentialNotation(number);
+            if (indexOfExponent == -2) return false;
+            if (indexOfExponent == -1) return true;
+           
+            string afterExponent = number.Substring(indexOfExponent + 1);
+            int index = 0;
+
+            if (
+                (dotPosition > 0) &&
+                (indexOfExponent > dotPosition + 1) &&
+                (dotCount == 1))
+            {
+                if (afterExponent.Length == 1)
+                {
+                    return VerifyIfDigit('0', '9', afterExponent.Substring(index));
+                }
+                else if (afterExponent.Length == 2)
+                {
+                    if (
+                        (MatchCharacter( afterExponent.Substring(index), '+')
+                        || MatchCharacter( afterExponent.Substring(index), '-'))
+                        && VerifyIfDigit('0', '9', afterExponent.Substring(index + 1))
+                        )
+                    {
+                        return true;
+                    }
+
+                }
+
+            }
+            return false;
+
+        }
     }
 }

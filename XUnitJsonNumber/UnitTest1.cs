@@ -45,5 +45,14 @@ namespace XUnitJsonNumber
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [InlineData("12.34E2", true)]
+        [InlineData("12.34E-2", true)]
+        public void VerifyExponentialNotationPass(string number, bool expected)
+        {
+            bool actual = Program.VerifyExponentialNotation(number);
+            Assert.Equal(expected, actual);
+        }
+
     }
 }
