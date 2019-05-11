@@ -2,11 +2,18 @@
 
 namespace JsonNumberMain
 {
-   public  class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string s = Console.ReadLine();
+            if (VerifyFinalNumber(s))
+            {
+                Console.WriteLine("Valid");
+            }
+            else Console.WriteLine("Invalid");
+
+            Console.Read();
         }
 
         public static bool VerifyIfDigit(char start, char end, string number)
@@ -22,12 +29,12 @@ namespace JsonNumberMain
             return number.Length - number.Replace(toCount, "").Length;
         }
 
-        public static int GetOccurenceCountIgnoringCase(string number,char c)
+        public static int GetOccurenceCountIgnoringCase(string number, char c)
         {
             int count = 0;
-            foreach(char ch in number)
+            foreach (char ch in number)
             {
-                if(char.ToUpperInvariant(ch) == char.ToUpperInvariant(c))
+                if (char.ToUpperInvariant(ch) == char.ToUpperInvariant(c))
                 {
                     count++;
                 }
@@ -39,11 +46,11 @@ namespace JsonNumberMain
         {
             char exponent = 'e';
             int charCount = GetOccurenceCountIgnoringCase(number, exponent);
-            if(charCount==0||charCount == 1)
+            if (charCount == 0 || charCount == 1)
             {
                 return number.IndexOf(exponent.ToString(), StringComparison.CurrentCultureIgnoreCase);
             }
-            
+
             return -2;
         }
 
@@ -59,7 +66,7 @@ namespace JsonNumberMain
             int indexOfExponent = GetIndexOfExponentialNotation(number);
             if (indexOfExponent == -2) return false;
             if (indexOfExponent == -1) return true;
-           
+
             string afterExponent = number.Substring(indexOfExponent + 1);
             int index = 0;
 
@@ -75,8 +82,8 @@ namespace JsonNumberMain
                 else if (afterExponent.Length == 2)
                 {
                     if (
-                        (MatchCharacter( afterExponent.Substring(index), '+')
-                        || MatchCharacter( afterExponent.Substring(index), '-'))
+                        (MatchCharacter(afterExponent.Substring(index), '+')
+                        || MatchCharacter(afterExponent.Substring(index), '-'))
                         && VerifyIfDigit('0', '9', afterExponent.Substring(index + 1))
                         )
                     {
@@ -89,5 +96,28 @@ namespace JsonNumberMain
             return false;
 
         }
+
+        public static bool VerifyNegativeNumbers(string number)
+        {
+            int index = 0;
+
+            return MatchCharacter( number.Substring(index), '-') || MatchCharacter( number.Substring(index), '0');
+           
+        }
+
+        public static bool VerifyFinalNumber(string number)
+        {
+
+            string onlyDigits = number.Replace("-", "").Replace("e", "").Replace("E", "").Replace("+", "").Replace(".", "");
+            Console.WriteLine(onlyDigits);
+            for (int i = 0; i < onlyDigits.Length; i++)
+            {
+                if (!VerifyIfDigit('0', '9', onlyDigits.Substring(i))) return false;
+            }
+            if (VerifyNegativeNumbers(number) && VerifyExponentialNotation(number)) return true;
+            return false;
+
+        }
+
     }
 }

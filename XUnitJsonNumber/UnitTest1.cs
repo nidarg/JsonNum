@@ -54,5 +54,23 @@ namespace XUnitJsonNumber
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [InlineData("0.2E4e5",  true)]
+        [InlineData("-3.2E4e5", true)]
+        public void VerifyNegativeNumberPass(string number, bool expected)
+        {
+            bool actual = Program.VerifyNegativeNumbers(number);
+            Assert.Equal(expected, actual);
+        }
+
+
+        [Theory]
+        [InlineData("0.24e5", true)]
+        [InlineData("-3.24e-2", true)]
+        public void VerifyFinalNumberPass(string number, bool expected)
+        {
+            bool actual = Program.VerifyFinalNumber(number);
+            Assert.Equal(expected, actual);
+        }
     }
 }
