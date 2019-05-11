@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNumberMain", "JsonNumberMain\JsonNumberMain.csproj", "{0AC30186-B853-45CF-ADAE-E776E03C5AFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitJsonNumber", "XUnitJsonNumber\XUnitJsonNumber.csproj", "{8EA65433-1946-4F13-A1ED-069EA385D48A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0AC30186-B853-45CF-ADAE-E776E03C5AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AC30186-B853-45CF-ADAE-E776E03C5AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC30186-B853-45CF-ADAE-E776E03C5AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA65433-1946-4F13-A1ED-069EA385D48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA65433-1946-4F13-A1ED-069EA385D48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA65433-1946-4F13-A1ED-069EA385D48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA65433-1946-4F13-A1ED-069EA385D48A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
