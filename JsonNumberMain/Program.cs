@@ -2,11 +2,19 @@
 
 namespace JsonNumberMain
 {
-    class Program
+   public  class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+        }
+
+        public static bool VerifyIfDigit(char start, char end, string number)
+        {
+            if (string.IsNullOrEmpty(number))
+                return false;
+
+            return start <= number[0] && number[0] <= end;
         }
     }
 }
