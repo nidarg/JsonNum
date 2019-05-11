@@ -21,5 +21,12 @@ namespace XUnitJsonNumber
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [InlineData("12E485", 2)]
+        public void GetIndexOfE(string number, int expected)
+        {
+            int actual = Program.GetIndexOfExponetialNotation(number);
+            Assert.Equal(expected, actual);
+        }
     }
 }
