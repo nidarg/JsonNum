@@ -16,5 +16,10 @@ namespace JsonNumberMain
 
             return start <= number[0] && number[0] <= end;
         }
+
+        public static int GetOccurenceCount(string toCount, string number)
+        {
+            return number.Length - number.Replace(toCount, "").Length;
+        }
     }
 }

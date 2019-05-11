@@ -13,5 +13,13 @@ namespace XUnitJsonNumber
             bool actual = Program.VerifyIfDigit(start, end, s.Substring(3));
             Assert.Equal(expected, actual);
         }
+        [Theory]
+        [InlineData(".", "12.34.5.", 3)]
+        public void TestCountOfDotInString(string toCount, string number, int expected)
+        {
+            int actual = Program.GetOccurenceCount(toCount,number);
+            Assert.Equal(expected, actual);
+        }
+
     }
 }
